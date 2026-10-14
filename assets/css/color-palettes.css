@@ -1,0 +1,12 @@
+:root {
+    /* Logo da Piropo Negócios Imobiliários */
+    --piropo-color-primary: #FDD309; /* Cor principal: botões, fundos de destaque e identidade visual */
+    --piropo-color-secondary: #010000; /* Cor de apoio: títulos e elementos secundários */
+    --piropo-color-accent: #C09701; /* Destaques pontuais, ícones e bordas de ênfase */
+    --piropo-color-tertiary: #7B6002; /* Elementos complementares, indicadores e links sobre fundo claro */
+    --piropo-color-neutral: #5C5648; /* Textos secundários, bordas e ícones neutros */
+    --piropo-color-bg: hsl(50, 60%, 95%); /* Fundo suave para seções e cartões */
+    --piropo-color-primary-hover: #E6BC00; /* Hover de botões principais */
+    --piropo-color-gradient: linear-gradient(135deg, #FFF172 0%, #FDD309 35%, #7B6002 100%); /* Hero, banners e superfícies de destaque */
+    --piropo-color-gradient-hover: linear-gradient(135deg, #FFF68A 0%, #FFDD2E 35%, #8F7003 100%); /* Hover de botões e elementos com gradiente */
+}

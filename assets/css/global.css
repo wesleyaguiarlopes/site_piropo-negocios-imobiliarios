@@ -7,3 +7,31 @@
 body {
     font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
+
+.button {
+    font: inherit;
+    cursor: pointer;
+    line-height: 1.2;
+    font-weight: bold;
+    align-items: center;
+    border-radius: 15px;
+    display: inline-flex;
+    text-decoration: none;
+    padding: 0.4375rem 0.5rem 0.4375rem 1.75rem;
+    transition: background-color 180ms ease, transform 180ms ease;
+
+    &:focus-visible {
+        outline-offset: 4px;
+        outline: 3px solid var(--piropo-color-tertiary);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        transition: none;
+    }
+}

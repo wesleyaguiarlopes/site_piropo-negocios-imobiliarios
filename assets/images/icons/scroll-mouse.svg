@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" fill="none">
+  <style>
+    .scroll-wheel { transform-box: fill-box; transform-origin: center; animation: scroll-wheel 1.4s ease-in-out infinite; }
+    @keyframes scroll-wheel { 0%, 100% { transform: translateY(0); opacity: 1; } 65% { transform: translateY(6px); opacity: .35; } }
+    @media (prefers-reduced-motion: reduce) { .scroll-wheel { animation: none; } }
+  </style>
+  <rect x="3.5" y="1.5" width="17" height="33" rx="8.5" stroke="hsl(50, 60%, 95%)" stroke-width="3"/>
+  <circle class="scroll-wheel" cx="12" cy="9" r="1.6" fill="hsl(50, 60%, 95%)"/>
+</svg>
