@@ -10,11 +10,17 @@
         <link rel="stylesheet" href="/assets/css/global.css">
 
         <!-- style sheets exclusive to this file -->
+        <link rel="stylesheet" href="/assets/css/header.css">
         <link rel="stylesheet" href="/assets/css/index/home.css">
+
+        <script src="/assets/js/header.js" defer></script>
 
         <title>Piropo Negócios Imobiliários</title>
     </head>
     <body>
+        <header id="header">
+            <?php require __DIR__ . '/assets/php/header.php'; ?>
+        </header>
         <main>
             <section id="home" aria-labelledby="headline">
                 <picture class="wallpaper-area" aria-hidden="true">
