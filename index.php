@@ -12,6 +12,7 @@
         <!-- style sheets exclusive to this file -->
         <link rel="stylesheet" href="/assets/css/header.css">
         <link rel="stylesheet" href="/assets/css/index/home.css">
+        <link rel="stylesheet" href="/assets/css/index/residences.css">
 
         <script src="/assets/js/header.js" defer></script>
 
@@ -76,6 +77,114 @@
                 <div class="hero-scroll-cue" aria-hidden="true">
                     <img class="hero-scroll-icon hero-scroll-mouse" src="/assets/images/icons/scroll-mouse.svg" alt="">
                     <img class="hero-scroll-icon hero-scroll-chevron" src="/assets/images/icons/chevron-down.svg" alt="">
+                </div>
+            </section>
+
+            <section class="residences" id="residenciais" aria-labelledby="title">
+                <div class="content">
+                    <p class="eyebrow">Piropo Negócios Imobiliários</p>
+                    <h2 id="title">Conheça nossos residenciais</h2>
+                    <p>Um espaço reservado para apresentar os empreendimentos Piropo.</p>
+                </div>
+
+                <?php
+                    $residenciaisPorStatus = require __DIR__ . '/assets/php/residences.php';
+                    $residenciaisDisponiveis = $residenciaisPorStatus['available'];
+                    $residenciaisVendidos = $residenciaisPorStatus['sold'];
+                ?>
+                <div class="galleries">
+                    <section class="group" aria-labelledby="available-residences-title">
+                        <div class="group-heading">
+                            <h3 id="available-residences-title">Lotes disponíveis para compra</h3>
+                        </div>
+                        <ul class="gallery" aria-label="Residenciais com lotes disponíveis para compra">
+                            <?php foreach ($residenciaisDisponiveis as $residencial): ?>
+                                <li class="card">
+                                    <a class="card-link" href="#" aria-label="Conhecer <?= htmlspecialchars($residencial['name'], ENT_QUOTES, 'UTF-8') ?>">
+                                        <span class="photo" aria-hidden="true">
+                                            <?php $imageBase = htmlspecialchars($residencial['image_base'], ENT_QUOTES, 'UTF-8'); ?>
+                                            <picture>
+                                                <source type="image/avif" srcset="<?= $imageBase ?>_480w.avif 480w, <?= $imageBase ?>_800w.avif 800w, <?= $imageBase ?>_1600w.avif 1600w" sizes="<?= htmlspecialchars($residencial['sizes'], ENT_QUOTES, 'UTF-8') ?>">
+                                                <source type="image/webp" srcset="<?= $imageBase ?>_480w.webp 480w, <?= $imageBase ?>_800w.webp 800w, <?= $imageBase ?>_1600w.webp 1600w" sizes="<?= htmlspecialchars($residencial['sizes'], ENT_QUOTES, 'UTF-8') ?>">
+                                                <img src="<?= $imageBase ?>_800w.jpg" srcset="<?= $imageBase ?>_480w.jpg 480w, <?= $imageBase ?>_800w.jpg 800w, <?= $imageBase ?>_1600w.jpg 1600w" sizes="<?= htmlspecialchars($residencial['sizes'], ENT_QUOTES, 'UTF-8') ?>" width="1600" height="900" alt="" loading="lazy" decoding="async">
+                                            </picture>
+                                        </span>
+                                        <span class="label">
+                                            <span class="label-icon" aria-hidden="true">
+                                                <img src="<?= htmlspecialchars($residencial['icon'], ENT_QUOTES, 'UTF-8') ?>" alt="">
+                                            </span>
+                                            <span class="label-copy">
+                                                <span class="label-name"><?= htmlspecialchars($residencial['name'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                <span class="label-city">
+                                                    <img src="/assets/images/icons/location-pin.svg" alt="" aria-hidden="true">
+                                                    <span><?= htmlspecialchars($residencial['city'] . ' / ' . $residencial['state'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                </span>
+                                                <span class="label-area">
+                                                    <img src="/assets/images/icons/lot-area.svg" alt="" aria-hidden="true">
+                                                    <span>Lotes a partir de <?= number_format($residencial['lot_area'], 0, ',', '.') ?> m²</span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="button cta" aria-hidden="true">
+                                            <span>Conhecer</span>
+                                            <span class="button-icon-wrap" aria-hidden="true">
+                                                <img class="button-icon" src="/assets/images/icons/arrow-up.svg" alt="">
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+
+                    <section class="group group--sold" aria-labelledby="sold-residences-title">
+                        <div class="group-heading group-heading--sold">
+                            <div>
+                                <p class="group-eyebrow">Vitrine de Sucesso</p>
+                                <h3 id="sold-residences-title">Residenciais Vendidos</h3>
+                            </div>
+                            <img class="sold-stamp" src="/assets/images/stamps/icone_selo_100%25-vendido.svg" alt="100% dos lotes vendidos">
+                        </div>
+                        <p class="group-description">Conheça projetos que já tiveram todos os lotes vendidos e fazem parte da trajetória da Piropo.</p>
+                        <ul class="gallery<?= count($residenciaisVendidos) <= 2 ? ' gallery--few' : '' ?>" aria-label="Residenciais com 100% dos lotes vendidos">
+                            <?php foreach ($residenciaisVendidos as $residencial): ?>
+                                <li class="card">
+                                    <a class="card-link" href="#" aria-label="Conhecer <?= htmlspecialchars($residencial['name'], ENT_QUOTES, 'UTF-8') ?>">
+                                        <span class="photo" aria-hidden="true">
+                                            <?php $imageBase = htmlspecialchars($residencial['image_base'], ENT_QUOTES, 'UTF-8'); ?>
+                                            <picture>
+                                                <source type="image/avif" srcset="<?= $imageBase ?>_480w.avif 480w, <?= $imageBase ?>_800w.avif 800w, <?= $imageBase ?>_1600w.avif 1600w" sizes="<?= htmlspecialchars($residencial['sizes'], ENT_QUOTES, 'UTF-8') ?>">
+                                                <source type="image/webp" srcset="<?= $imageBase ?>_480w.webp 480w, <?= $imageBase ?>_800w.webp 800w, <?= $imageBase ?>_1600w.webp 1600w" sizes="<?= htmlspecialchars($residencial['sizes'], ENT_QUOTES, 'UTF-8') ?>">
+                                                <img src="<?= $imageBase ?>_800w.jpg" srcset="<?= $imageBase ?>_480w.jpg 480w, <?= $imageBase ?>_800w.jpg 800w, <?= $imageBase ?>_1600w.jpg 1600w" sizes="<?= htmlspecialchars($residencial['sizes'], ENT_QUOTES, 'UTF-8') ?>" width="1600" height="900" alt="" loading="lazy" decoding="async">
+                                            </picture>
+                                        </span>
+                                        <span class="label">
+                                            <span class="label-icon" aria-hidden="true">
+                                                <img src="<?= htmlspecialchars($residencial['icon'], ENT_QUOTES, 'UTF-8') ?>" alt="">
+                                            </span>
+                                            <span class="label-copy">
+                                                <span class="label-name"><?= htmlspecialchars($residencial['name'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                <span class="label-city">
+                                                    <img src="/assets/images/icons/location-pin.svg" alt="" aria-hidden="true">
+                                                    <span><?= htmlspecialchars($residencial['city'] . ' / ' . $residencial['state'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                </span>
+                                                <span class="label-area">
+                                                    <img src="/assets/images/icons/lot-area.svg" alt="" aria-hidden="true">
+                                                    <span>Lotes a partir de <?= number_format($residencial['lot_area'], 0, ',', '.') ?> m²</span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="button cta" aria-hidden="true">
+                                            <span>Conhecer</span>
+                                            <span class="button-icon-wrap" aria-hidden="true">
+                                                <img class="button-icon" src="/assets/images/icons/arrow-up.svg" alt="">
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
                 </div>
             </section>
         </main>
